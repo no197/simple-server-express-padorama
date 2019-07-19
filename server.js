@@ -1,5 +1,11 @@
 const express = require("express");
-const { upload, getResult, deleteUpload, deleteAll } = require("./router");
+const {
+  upload,
+  getResult,
+  deleteUpload,
+  deleteAll,
+  getAllResult,
+} = require("./router");
 const cors = require("cors");
 
 const server = express();
@@ -10,8 +16,10 @@ var corsOptions = {
 };
 
 server.use(cors(corsOptions));
+server.use(express.static("result"));
 
 server.get("/result", getResult);
+server.get("/all", getAllResult);
 server.post("/upload", upload);
 server.delete("/upload/:name", deleteUpload);
 server.delete("/", deleteAll);
