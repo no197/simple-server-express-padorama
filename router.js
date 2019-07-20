@@ -37,6 +37,7 @@ exports.getResult = (req, res) => {
     if (fs.existsSync(__dirname + `/result/output_${filename}.png`)) {
       return res.json(path);
     }
+    console.log("Can't not create images");
     return res.status(404).send("Bad request");
   });
 };
